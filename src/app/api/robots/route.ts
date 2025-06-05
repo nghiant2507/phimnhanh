@@ -11,4 +11,4 @@ Disallow: /
       'Content-Type': 'text/plain',
     },
   });
-} 
+}

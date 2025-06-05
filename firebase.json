@@ -9,6 +9,13 @@
       "firebase-debug.*.log",
       "functions"
     ],
+    "redirects": [
+      {
+        "source": "**",
+        "destination": "/404.html",
+        "type": 302
+      }
+    ],
     "alwaysDeployFromSource": true
   }
 }
