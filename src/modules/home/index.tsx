@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { IResponseDataMovieBanner } from '~/types';
 
 import { MoviesUpdates } from './component/MoviesUpdates';
@@ -9,6 +11,17 @@ export const HomeModule = ({
 }: {
   dataHome: IResponseDataMovieBanner;
 }) => {
+  useEffect(() => {
+    if (dataHome?.pagination?.updateToday) {
+      const currentValue = localStorage.getItem('updateToday');
+      const newValue = JSON.stringify(dataHome?.pagination?.updateToday);
+
+      if (currentValue !== newValue) {
+        localStorage.setItem('updateToday', newValue);
+      }
+    }
+  }, [dataHome]);
+
   return (
     <div className={'flex-1 flex flex-col gap-8'}>
       <MoviesUpdates items={dataHome.items} />

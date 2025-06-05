@@ -22,8 +22,15 @@ export const ItemUpdate = ({
       <figure className={'absolute inset-0 z-0'}>
         <img
           src={item?.thumb_url}
+          srcSet={`
+            ${item?.thumb_url}?w=640 640w,
+            ${item?.thumb_url}?w=1024 1024w,
+            ${item?.thumb_url}?w=1920 1920w
+          `}
+          sizes="100vw"
           className={'size-full object-cover object-center'}
           alt={item.name}
+          loading="lazy"
         />
         <div className="absolute top-0 left-0 size-full bg-gradient-to-b  from-transparent to-black"></div>
         <div
@@ -48,10 +55,17 @@ export const ItemUpdate = ({
       >
         <img
           src={item?.poster_url}
+          srcSet={`
+            ${item?.poster_url}?w=300 300w,
+            ${item?.poster_url}?w=600 600w,
+            ${item?.poster_url}?w=800 800w
+          `}
+          sizes="(max-width: 768px) 300px, 800px"
           className={
             'size-full object-cover object-center brightness-85 shadow-lg'
           }
           alt={item.name}
+          loading="lazy"
         />
       </figure>
       {/* Content Section */}

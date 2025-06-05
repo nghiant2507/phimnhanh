@@ -14,6 +14,7 @@ export interface IPagination {
   totalPages: number;
   totalItems: number;
   totalItemsPerPage: number;
+  updateToday: number;
 }
 
 export interface IParamsMeta {
