@@ -1,4 +1,5 @@
-import { HeartIcon, PlayIcon, StarIcon } from 'lucide-react';
+import { HeartIcon, PlayIcon } from 'lucide-react';
+import Link from 'next/link';
 
 import { cn } from '~/core';
 import { Button } from '~/core/ui/button';
@@ -71,7 +72,7 @@ export const ItemUpdate = ({
       {/* Content Section */}
       <div
         className={cn(
-          'relative flex flex-col gap-2 transition-all duration-700 w-full ',
+          'relative flex flex-col items-center md:items-start gap-2 transition-all duration-700 w-full ',
           {
             'opacity-0 translate-y-5': !isActive,
             'opacity-100 translate-y-0': isActive,
@@ -81,31 +82,27 @@ export const ItemUpdate = ({
         {/* Main Title */}
         <h2
           className={
-            'text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg'
+            'text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg text-center md:text-left'
           }
         >
           {item.name}
         </h2>
 
-        <div className={'flex items-center gap-2 text-white/90'}>
+        <div
+          className={
+            'flex flex-wrap items-center justify-center md:justify-start gap-2 text-white/90'
+          }
+        >
           <h3 className={'text-lg md:text-xl lg:text-2xl font-bold text-white'}>
             {item.origin_name}
           </h3>
           <span className="text-lg">({item.year})</span>
-          {item.tmdb.vote_average > 0 && (
-            <div className={'flex items-center text-white'}>
-              <span className={'text-sm mr-1 font-semibold'}>
-                {item.tmdb.vote_average.toFixed(1)}
-              </span>
-              <StarIcon size={16} strokeWidth={3} />
-            </div>
-          )}
         </div>
 
         {/* Type and Current Episode */}
         <div
           className={
-            'flex flex-wrap items-center gap-2 text-white font-semibold '
+            'flex flex-wrap items-center justify-center md:justify-start gap-2 text-white font-semibold '
           }
         >
           <span className={'text-sm p-2 bg-white/10 md:bg-black/60 rounded-md'}>
@@ -123,14 +120,22 @@ export const ItemUpdate = ({
         </div>
 
         {/* Categories */}
-        <div className={'flex flex-wrap items-center gap-2 text-white'}>
-          {item?.category?.map((category) => (
-            <span
+        <div
+          className={
+            'flex flex-wrap items-center justify-center md:justify-start gap-2 text-white mt-1.5'
+          }
+        >
+          {item?.category?.map((category, index) => (
+            <Link
+              href={`/category/${category?.slug}`}
               key={category?.id}
-              className={'text-sm p-2 bg-black/60 rounded-md'}
+              className={cn(
+                'text-xs py-1 px-3  rounded-full',
+                index == 0 ? 'bg-primary/90' : 'bg-gray-800/60',
+              )}
             >
               {category.name}
-            </span>
+            </Link>
           ))}
         </div>
 
@@ -141,12 +146,9 @@ export const ItemUpdate = ({
             <span>Xem Phim</span>
           </Button>
           <Button
-            className={
-              'cursor-pointer bg-yellow-500 hover:bg-yellow-700 flex-1 md:flex-0'
-            }
+            className={'cursor-pointer bg-yellow-500 hover:bg-yellow-700 '}
           >
             <HeartIcon size={20} color={'white'} />
-            <span>Yêu thích</span>
           </Button>
         </div>
       </div>

@@ -7,6 +7,7 @@ export interface ISeoPageEntity {
   descriptionHead: string;
   og_image: string[];
   og_type: string;
+  og_url: string;
 }
 
 export interface IPagination {
@@ -23,6 +24,7 @@ export interface IParamsMeta {
   filterYear: string;
   sortField: string;
   totalSportsVideos: string;
+  pagination: IPagination;
   type_slug: string;
 }
 

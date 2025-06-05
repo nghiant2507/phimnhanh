@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-quicksand: var(--font-quicksand, 'system-ui', 'sans-serif');
+  --font-montserrat: var(--font-montserrat, 'system-ui', 'sans-serif');
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);

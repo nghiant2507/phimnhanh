@@ -4,11 +4,28 @@ import { cache } from 'react';
 import { PageHeader } from '~/components';
 import { HomeModule } from '~/modules';
 import { createService } from '~/services';
-import { IResponseDataMovieBanner } from '~/types';
+import { IResponseDataMovie, IResponseDataMovieBanner } from '~/types';
 
 const getDataBanner = cache(async () => {
   return await createService<IResponseDataMovieBanner>(
     '/danh-sach/phim-moi-cap-nhat-v3',
+  );
+});
+
+const getDataFilm = cache(async () => {
+  return await createService<IResponseDataMovie>('/v1/api/danh-sach/phim-le', {
+    page: 1,
+    limit: 15,
+  });
+});
+
+const getDataSection = cache(async () => {
+  return await createService<IResponseDataMovie>(
+    '/v1/api/danh-sach/phim-long-tieng',
+    {
+      page: 1,
+      limit: 15,
+    },
   );
 });
 
@@ -36,11 +53,19 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 export default async function Home() {
   const dataHome = await getDataBanner();
-  console.log(dataHome);
+
+  const dataFilmLe = await getDataFilm();
+
+  const dataSection = await getDataSection();
+
   return (
     <>
       <PageHeader />
-      <HomeModule dataHome={dataHome} />
+      <HomeModule
+        dataHome={dataHome}
+        dataFilmLe={dataFilmLe}
+        dataSection={dataSection}
+      />
     </>
   );
 }

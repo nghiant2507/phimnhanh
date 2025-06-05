@@ -97,37 +97,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: 'Phim lẻ',
         icon: VideoIcon,
-        href: '/phim-le',
+        href: '/danh-sach/phim-le',
       },
       {
         title: 'Phim bộ',
         icon: MonitorPlay,
-        href: '/phim-bo',
+        href: '/danh-sach/phim-bo',
       },
       {
         title: 'Phim VietSub',
         icon: Subtitles,
-        href: '/phim-vietsub',
+        href: '/danh-sach/phim-vietsub',
       },
       {
         title: 'Phim Thuyết Minh',
         icon: MessageSquare,
-        href: '/phim-thuyet-minh',
+        href: '/danh-sach/phim-thuyet-minh',
       },
       {
         title: 'SubTeam',
         icon: Users,
-        href: '/subteam',
+        href: '/danh-sach/subteam',
       },
       {
         title: 'Hoạt hình',
         icon: Baby,
-        href: '/hoat-hinh',
+        href: '/danh-sach/hoat-hinh',
       },
       {
         title: 'TV Show',
         icon: Tv,
-        href: '/tv-show',
+        href: '/danh-sach/tv-show',
       },
       {
         title: 'Thể loại',

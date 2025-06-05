@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export type IParams = {
-  page?: number;
+  page?: number | string;
   type_list?: number;
   sort_field?: 'modified.time' | '_id' | 'year';
   sort_type?: 'desc' | 'asc';

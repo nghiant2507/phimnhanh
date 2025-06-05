@@ -1,12 +1,18 @@
 import './globals.css';
 
-import { Inter } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 
 import { LayoutComponent, ThemeProvider } from '~/components';
 
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+});
+
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export default function RootLayout({
@@ -17,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} overflow-x-hidden w-screen`}
+        className={`${inter.className} ${montserrat.variable} overflow-x-hidden w-screen`}
         suppressHydrationWarning
       >
         <ThemeProvider
